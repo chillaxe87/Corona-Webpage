@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="main.css"></link>
+        <link rel="stylesheet" href="general-info.css"></link>
+        <link rel="stylesheet" href="graphs-first.css"></link>
+        <title>קורונה - לוח בקרה</title>
+        <link rel="shortcut icon" href="Images/main logo.png">
+        <script src="https://code.highcharts.com/highcharts.js"></script>
+        <script src="https://code.highcharts.com/modules/variable-pie.js"></script>
+        <script src="https://rawgit.com/highcharts/rounded-corners/master/rounded-corners.js"></script>
+    </head>
+    <body onload='createTable()'>
+        <header>
+            <div class="upper-line">              
+            </div>
+            <div class="header-container">
+                <div class="header-container__logo">
+                    <button>
+                        <span class="line"></span>
+                        <span class="line"></span>
+                        <span class="line"></span>
+                    </button>
+                    <img src="Images/main logo header.png " alt="מדינת ישראל משרד הבריאות">
+                </div>
+                <div class="header-container__title">
+                    <span class="header-container__title-main"> נגיף הקורונה בישראל - תמונת מצב כללית</span>
+                    <span class="header-container__title-time"> עדכון אחרון: 17 בנובמבר 2020 | 10:05</span>
+                </div>
+                <div class="header-container__dark-mode" onclick="invertColor()">
+                    <span>לתצוגה נגישה</span>
+                </div>
+            </div>
+        </header>
+        <main id="main" class="regular">
+            <section class="general-info">
+                <div class="general-info__container">
+                    <div class="general-info__container-title">
+                        <h5>מאומתים חדשים אתמול</h5>
+                        <div class="circle"> <span>i</span></div>
+                    </div>
+                    <h4>861</h4>
+                    <div>
+                        <h5>206+</h5>
+                        <span>מחצות</span>
+                    </div>
+                    <div>
+                        <h5>325,143</h5>
+                        <span>סה"כ</span>
+                    </div>
+                </div>
+                <div class="general-info__container">
+                    <div class="general-info__container-title">
+                        <h5>חולים פעילים</h5>
+                        <div class="circle"> <span>i</span></div>
+                    </div>
+                    <h4>8137</h4>
+                    <div>
+                        <h5>76+</h5>
+                        <span>מחצות</span>
+                    </div>
+                    <div class="infected-distribution">
+                        <div>
+                            <p>בית / קהילה</p>
+                            <span>7,432</span>
+                        </div>
+                        <div>
+                            <p> מלון</p>
+                            <span>142</span>
+                        </div>
+                        <div>
+                            <p> בי"ח</p>
+                            <span>563</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="general-info__container">
+                    <div class="general-info__container-title">
+                    <h5>חולים קשה</h5>
+                    <div class="circle"> <span>i</span></div>
+                    </div>
+                    <h4>319</h4>
+                    <div>
+                        <h5>5-</h5>
+                        <span>מחצות</span>
+                    </div>
+                    <div class="infected-distribution__horizontal">
+                        <div>
+                            <span class="red-circle"></span>
+                            <p>מתוכם קריטי</p>
+                            <span>144</span>
+                        </div>
+                        <div>
+                            <span class="orange-circle"></span>
+                            <p>בינוני</p>
+                            <span>86</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="general-info__container">
+                    <div class="general-info__container-title">
+                        <h5>מונשמים</h5>
+                        <div class="circle"> <span>i</span></div>
+                    </div>
+                    <h4>124</h4>
+                    <div>
+                        <h5>4+</h5>
+                        <span>מחצות</span>
+                    </div>
+                    <div class="steps-circle">
+                        <div> <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" class="eva eva-bar-chart-2" fill="currentColor"><g data-name="Layer 2"><g data-name="bar-chart-2"><rect width="24" height="24" transform="rotate(90 12 12)" opacity="0"></rect><path d="M12 8a1 1 0 0 0-1 1v11a1 1 0 0 0 2 0V9a1 1 0 0 0-1-1z"></path><path d="M19 4a1 1 0 0 0-1 1v15a1 1 0 0 0 2 0V5a1 1 0 0 0-1-1z"></path><path d="M5 12a1 1 0 0 0-1 1v7a1 1 0 0 0 2 0v-7a1 1 0 0 0-1-1z"></path></g></g></svg></div> 
+                        <p>מגמת שינוי יומית</p>                    
+                    </div>
+                </div>
+                <div class="general-info__container">
+                    <div class="general-info__container-title">
+                        <h5>נפטרים מצטברים</h5>
+                        <div class="circle"> <span>i</span></div>
+                    </div>
+                    <h4>2736</h4>
+                    <div class="steps-circle">
+                        <div> <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" class="eva eva-bar-chart-2" fill="currentColor"><g data-name="Layer 2"><g data-name="bar-chart-2"><rect width="24" height="24" transform="rotate(90 12 12)" opacity="0"></rect><path d="M12 8a1 1 0 0 0-1 1v11a1 1 0 0 0 2 0V9a1 1 0 0 0-1-1z"></path><path d="M19 4a1 1 0 0 0-1 1v15a1 1 0 0 0 2 0V5a1 1 0 0 0-1-1z"></path><path d="M5 12a1 1 0 0 0-1 1v7a1 1 0 0 0 2 0v-7a1 1 0 0 0-1-1z"></path></g></g></svg></div> 
+                        <p>מגמת שינוי יומית</p>                    
+                    </div>
+                </div>
+                <div class="general-info__container">
+                    <div class="general-info__container-title">
+                        <h5>אחוז בדיקות חיוביות אתמול</h5>
+                        <div class="circle"> <span>i</span></div>
+                    </div>
+                    <h4>1.8%</h4>
+                    <div>
+                        <h5>49,204</h5>
+                        <span>בדיקות אתמול</span>
+                    </div>
+                    <div class="steps-circle">
+                        <div> <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" class="eva eva-bar-chart-2" fill="currentColor"><g data-name="Layer 2"><g data-name="bar-chart-2"><rect width="24" height="24" transform="rotate(90 12 12)" opacity="0"></rect><path d="M12 8a1 1 0 0 0-1 1v11a1 1 0 0 0 2 0V9a1 1 0 0 0-1-1z"></path><path d="M19 4a1 1 0 0 0-1 1v15a1 1 0 0 0 2 0V5a1 1 0 0 0-1-1z"></path><path d="M5 12a1 1 0 0 0-1 1v7a1 1 0 0 0 2 0v-7a1 1 0 0 0-1-1z"></path></g></g></svg></div> 
+                        <p> בדיקות יומיות</p>                    
+                    </div>
+                </div>
+            </section>
+            <section class="graphs-first">
+                <div class="graphs-first__title">
+                    <h2>מדדי התפשטות בהסתכלות שבועית</h2>
+                    <!-- <div>
+                        <span class="line"></span>
+                        <span class="line"></span>
+                        <span class="square"></span>
+                        <p>יעדי ממשלה</p>
+                    </div> -->
+                </div>
+                <div class="three-charts">
+                    <div class="chart-one">
+                        <h5>מגמת שינוי במאומתים חדשים וקצב הכפלה</h5>
+                        <div class="chart-one__description">
+                            <div class="circle"> <span>i</span></div>
+                            <p> % שינוי בממוצע מאונתים חדשים שבועי, ומספר הימים להכפלת הנדבקים(בסוגריים)</p>
+                        </div>
+                        <div id="area-Chart-1" style="height: 230px"></div>
+                    </div>
+                    <div class="chart-two">
+                        <h5> מספר החולים קשה והקריטי</h5>
+                        <div id="area-Chart-2" style="height: 230px"></div>
+                    </div>
+                    <div class="chart-three">
+                        <h5>מספר המאומתים החדשים <u>מחוץ</u> לאיזורי ההתפשטות</h5>
+                        <div class="chart-one__description">
+                            <div class="circle"> <span>i</span></div>
+                            <p>הנתונים אינם כוללים מאומתים מישובים אדומים, מוסדות גריאטריים וחוזרים מחו"ל</p>
+                        </div>
+                        <div id="column-Chart-1" style="height:230px"></div>
+                    </div>
+                </div>
+                <div class="two-charts">
+                    <div class=chart-four>
+                        <div class="chart-four__title">
+                            <h5>עקומה אפידמית</h5>
+                            <select name="" id="timeFrame" class="timeFrame">
+                                <option value="3"> שבועיים אחרונים</option>
+                                <option value="1">עד עכשיו</option>
+                                <option value="2">שבוע אחרון</option>
+                                <option value="4">חודש אחרון</option>
+                            </select>
+                        </div>
+                        <div class="chart-two__description">
+                            <div>
+                                <div class="circle"> <span> <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" class="eva eva-bulb-outline" fill="currentColor"><g data-name="Layer 2"><g data-name="bulb"><rect width="24" height="24" transform="rotate(180 12 12)" opacity="0"></rect><path d="M12 7a5 5 0 0 0-3 9v4a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-4a5 5 0 0 0-3-9zm1.5 7.59a1 1 0 0 0-.5.87V20h-2v-4.54a1 1 0 0 0-.5-.87A3 3 0 0 1 9 12a3 3 0 0 1 6 0 3 3 0 0 1-1.5 2.59z"></path><path d="M12 6a1 1 0 0 0 1-1V3a1 1 0 0 0-2 0v2a1 1 0 0 0 1 1z"></path><path d="M21 11h-2a1 1 0 0 0 0 2h2a1 1 0 0 0 0-2z"></path><path d="M5 11H3a1 1 0 0 0 0 2h2a1 1 0 0 0 0-2z"></path><path d="M7.66 6.42L6.22 5a1 1 0 0 0-1.39 1.47l1.44 1.39a1 1 0 0 0 .73.28 1 1 0 0 0 .72-.31 1 1 0 0 0-.06-1.41z"></path><path d="M19.19 5.05a1 1 0 0 0-1.41 0l-1.44 1.37a1 1 0 0 0 0 1.41 1 1 0 0 0 .72.31 1 1 0 0 0 .69-.28l1.44-1.39a1 1 0 0 0 0-1.42z"></path></g></g></svg></span></div>
+                                <p>מספר הנדבקים היום הינו <b>כפול</b> מהמספר <b>לפני 83 ימים</b></p>
+                            </div>              
+                        </div>
+                        <div class="infected-distribution__vertical">
+                            <div>
+                                <span class="blue-circle"></span>
+                                <p>מאומתים חדשים</p>
+                            </div>
+                            <div>
+                                <span class="brown-circle"></span>
+                                <p>מחלימים חדשים</p>
+                            </div>
+                            <div>
+                                <span class="green-circle"></span>
+                                <p>מאומתים מצטבר</p>
+                            </div>
+                        </div>
+                        <div id="area-Column-chart" style="height:210px"></div>
+                    </div>
+                    <div class="chart-four">
+                        <div class="chart-four__title">
+                            <h5> חולים קשה ומונשמים</h5>
+                            <select name="" id="timeFrame" class="timeFrame">
+                                <option value="4">חודש אחרון</option>
+                                <option value="1">עד עכשיו</option>
+                                <option value="2">שבוע אחרון</option>
+                                <option value="3"> שבועיים אחרונים</option>
+                            </select>
+                        </div>
+                        <div class="chart-two__description">
+                            <div>
+                                <div class="circle"> <span> <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" class="eva eva-bulb-outline" fill="currentColor"><g data-name="Layer 2"><g data-name="bulb"><rect width="24" height="24" transform="rotate(180 12 12)" opacity="0"></rect><path d="M12 7a5 5 0 0 0-3 9v4a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-4a5 5 0 0 0-3-9zm1.5 7.59a1 1 0 0 0-.5.87V20h-2v-4.54a1 1 0 0 0-.5-.87A3 3 0 0 1 9 12a3 3 0 0 1 6 0 3 3 0 0 1-1.5 2.59z"></path><path d="M12 6a1 1 0 0 0 1-1V3a1 1 0 0 0-2 0v2a1 1 0 0 0 1 1z"></path><path d="M21 11h-2a1 1 0 0 0 0 2h2a1 1 0 0 0 0-2z"></path><path d="M5 11H3a1 1 0 0 0 0 2h2a1 1 0 0 0 0-2z"></path><path d="M7.66 6.42L6.22 5a1 1 0 0 0-1.39 1.47l1.44 1.39a1 1 0 0 0 .73.28 1 1 0 0 0 .72-.31 1 1 0 0 0-.06-1.41z"></path><path d="M19.19 5.05a1 1 0 0 0-1.41 0l-1.44 1.37a1 1 0 0 0 0 1.41 1 1 0 0 0 .72.31 1 1 0 0 0 .69-.28l1.44-1.39a1 1 0 0 0 0-1.42z"></path></g></g></svg></span></div>
+                                <p>סה"כ <b>9337</b>  חולים קשה ו-<b>1891</b>     מונשמים      <b>מאז תחילת המשבר מרץ (2020</b>)</p>
+                            </div>         
+                        </div>
+                        <div class="infected-distribution__vertical">
+                            <div>
+                                <span class="orange-circle"></span>
+                                <p>חולים קשה</p>
+                            </div>
+                            <div>
+                                <span class="blue-circle"></span>
+                                <p>מונשמים </p>
+                            </div>
+                        </div>
+                        <div id="line-chart" style="height:210px"></div>
+                    </div>
+                </div>
+                <div class="two-charts_second">
+                    <div class="infected-cities">
+                        <div class="infected-cities__header">
+                            <div class="infected-cities__title">
+                                <h4>תכנית הרמזור</h4>
+                                <h5>*מרכיבי ציון הרמזור (לפי נתוני השבוע האחרון)</h5>
+                            </div>
+                            <div class="chart-one__description">
+                                <div class="circle"> <span>i</span></div>
+                                <p> הנתונים נכונים לתאריך 18/11/2020</p>
+                            </div>
+                            <div class="infected-cities__search">
+                                <input type="text" id="city-search" name="city" placeholder="חיפוש ישוב" onkeyup="searchCity()">
+                                </input>
+                                <ol id="cityList">
+                                </ol>
+                                <span></span>
+                            </div>
+                        </div>
+                        <div class="infected-cities__colors">
+                            <div class="infected-cities__colors-section">
+                                <div class="red-square"></div>
+                                <div>
+                                    <h6>אדום - פעילות מינימלית</h6>
+                                    <p>ציון 7 ומעלה</p>
+                                </div>
+                            </div>
+                            <div class="infected-cities__colors-section">
+                                <div class="orange-square"></div>
+                                <div>
+                                    <h6>כתום - פעילות מצומצמת</h6>
+                                    <p>ציון בין 5.5 ל- 7 </p>
+                                </div>
+                            </div>
+                            <div class="infected-cities__colors-section">
+                                <div class="yellow-square"></div>
+                                <div>
+                                    <h6>צהוב - פעילות מוגבלת</h6>
+                                    <p>ציון בין 4 ל- 5.5 </p>
+                                </div>
+                            </div>
+                            <div class="infected-cities__colors-section">
+                                <div class="green-square"></div>
+                                <div>
+                                    <h6>ירוק - פעילות מורחבת</h6>
+                                    <p>ציון עד 4 </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="infected-citied__data">
+                            <table style="width:100%" id="cityTable">
+                                <tr class="infected-citied__data-th" style="border-bottom: none;">
+                                    <th class="light-grey city-first" onclick="sortCity()" text-align: right; padding-right: 5px;">ישוב</th>
+                                    <th class="light-grey">צבע החלטת ממשלה</th>
+                                    <th class="light-grey" onclick="sortScore()">ציון וצבע יומי</th>
+                                    <th class="grey"  onclick="sortPopulation()">חולים חדשים לכל 10000 נפש*</th>
+                                    <th class="grey"  onclick="sortPositive()">% הבדיקות החיוביות*</th>
+                                    <th class="grey"  onclick="sortPercentage()">שיעור שינוי מאומתים*</th>
+                                    <th class="light-grey"  onclick="sortActive()">חולים פעילים</th>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="chart-four half-2">
+                        <div class="chart-four__title">
+                            <h5>בדיקות לגילוי נדבקים </h5>
+                            <div class="infected-distribution__vertical">
+                                <div>
+                                    <span class="blue-circle"></span>
+                                    <p> בדיקות</p>
+                                </div>
+                                <div>
+                                    <span class="green-circle"></span>
+                                    <p>מאומתים </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="chart-two__description">
+                            <div class="description_vertical">
+                                <div>
+                                    <div class="circle"> <span> <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" class="eva eva-bulb-outline" fill="currentColor"><g data-name="Layer 2"><g data-name="bulb"><rect width="24" height="24" transform="rotate(180 12 12)" opacity="0"></rect><path d="M12 7a5 5 0 0 0-3 9v4a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-4a5 5 0 0 0-3-9zm1.5 7.59a1 1 0 0 0-.5.87V20h-2v-4.54a1 1 0 0 0-.5-.87A3 3 0 0 1 9 12a3 3 0 0 1 6 0 3 3 0 0 1-1.5 2.59z"></path><path d="M12 6a1 1 0 0 0 1-1V3a1 1 0 0 0-2 0v2a1 1 0 0 0 1 1z"></path><path d="M21 11h-2a1 1 0 0 0 0 2h2a1 1 0 0 0 0-2z"></path><path d="M5 11H3a1 1 0 0 0 0 2h2a1 1 0 0 0 0-2z"></path><path d="M7.66 6.42L6.22 5a1 1 0 0 0-1.39 1.47l1.44 1.39a1 1 0 0 0 .73.28 1 1 0 0 0 .72-.31 1 1 0 0 0-.06-1.41z"></path><path d="M19.19 5.05a1 1 0 0 0-1.41 0l-1.44 1.37a1 1 0 0 0 0 1.41 1 1 0 0 0 .72.31 1 1 0 0 0 .69-.28l1.44-1.39a1 1 0 0 0 0-1.42z"></path></g></g></svg></span></div>
+                                    <p>סה"כ <b>126852</b> בדיקות בשבוע האחרון (<b>2.1%</b> אחוז המאומתים השבועי הממוצע)</p>
+                                </div>  
+                                <div>
+                                    <div class="circle-i"> <span>i</span></div>
+                                    <p>הנתונים אינם כוללים מידע על בדירות לאבחון החלמה</p>
+                                </div>  
+                            </div>
+                        </div>
+                        <div id="column-Chart-2" style="height:230px"></div>
+                    </div>
+                </div>
+                <div class="three-charts_second">
+                    <div class="infected-cities">
+                        <div class="infected-cities__header">
+                            <div class="infected-cities__title">
+                                <h4 style="padding: 1rem 0rem; position: sticky;"> סטטוס בתי החולים</h4>
+                            </div>
+                        </div>
+    
+                        <div class="infected-citied__data">
+                            <table style="width:100%" id="hospitalTable">
+                                <tr class="infected-citied__data-th">
+                                    <th class="light-grey city-first" style="text-align: right; padding-right: 5px;" onclick="sortHospitalName()">בית חולים</th>
+                                    <th class="light-grey" onclick="sortHospitalGeneral()"> % תפוסה כללי</th>
+                                    <th class="light-grey" onclick="sortHospitalCapacity()"> % תפוסת קורונה</th>
+                                    <th class="light-grey" onclick="sortHospitalInfected()">אנשי צוות מאומתים ובבידוד </th>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="chart-four half">
+                        <div class="chart-four__title">
+                            <h5>אנשי צוות בריאות מאומתים ובבידוד</h5>
+                        </div>
+                        <div id="pie-chart" style="height:200px"></div>
+                    </div>
+                    <div class="chart-four">
+                        <div class="chart-four__title">
+                            <h5> פילוח מדדים שונים על פי גיל ומגדר</h5>
+                            <select name="" id="timeFrame" class="timeFrame">
+                                <option value="1"> מאומתים</option>
+                                <option value="2"> נפטרים</option>
+                                <option value="3"> מונשמים</option>
+                                <option value="4"> מצב קשה</option>
+                            </select>
+                        </div>
+                        <div class="infected-distribution__vertical">
+                            <div>
+                                <span class="blue-circle"></span>
+                                <p> גברים</p>
+                            </div>
+                            <div>
+                                <span class="orange-circle"></span>
+                                <p>נשים</p>
+                            </div>
+                        </div>
+                        <div id="stack-chart" style="height:270px"></div>
+                    </div>
+                </div>
+
+                
+            </section>
+        </main>
+    </body>
+    <script src="main.js"></script>
+</html>
